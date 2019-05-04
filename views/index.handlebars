@@ -1,0 +1,33 @@
+<h1>Eat Da Burger!</h1>
+
+<h2>Availble Burgers</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#unless this.devoured}}
+     {{!-- will load burger data from database --}}
+     <li>{{this.id}}: {{this.burger_name}}<button class="burgerButton" value="{{this.id}}">Devour It!</button></li>
+    {{/unless}}
+  {{/each}}
+</ul>
+
+<h2>Devoured Burgers!</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#if this.devoured}}
+     {{!-- Burgers from database where devour equals true --}}
+      <li>{{this.id}}: {{this.burger_name}}</li>
+    {{/if}}
+  {{/each}}
+</ul>
+
+<h2>Add a Burger</h2>
+<form action="/burger/create"method="POST">
+
+  
+    <label for="ba">Burger Name:</label>
+    <input type="text" id="ba" name="name">
+  
+  <button type="submit">Add Burger</button>
+</form>
